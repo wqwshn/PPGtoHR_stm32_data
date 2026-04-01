@@ -98,17 +98,22 @@ void Error_Handler(void);
 #define CS_M_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
-// 工作模式宏定�?
+// 工作模式宏定义
 #define MODE_HEART_RATE 0
 #define MODE_SPO2       1
 
-// 全局模式�?关（修改此项后重新编译烧录即可切换模式）
-// 心率：MODE_HEART_RATE �?氧：MODE_SPO2
+// 全局模式开关（修改此项后重新编译烧录即可切换模式）
+// 心率：MODE_HEART_RATE  血氧：MODE_SPO2
 #define CURRENT_WORK_MODE MODE_HEART_RATE
+
+// PPG功能开关（修改此项后重新编译烧录即可启用/禁用PPG）
+// 1 = 启用PPG功能（需要MAX30101硬件连接）
+// 0 = 禁用PPG功能（PPG数据位置补0）
+#define ENABLE_PPG 1
 
 // 统一数据包长度为21字节
 #define PACKET_LEN 21
-#define XOR_CHECK_LEN 17  // 校验区域统一�?17字节 (ADC(8) + ACC(3) + PPG(4) + 扩展(2))
+#define XOR_CHECK_LEN 17  // 校验区域统一�?17字节 (ADC(8) + ACC(3) + PPG(4) + 扩展(2))
 
 /* USER CODE END Private defines */
 
