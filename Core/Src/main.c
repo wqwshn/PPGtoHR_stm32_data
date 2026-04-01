@@ -345,8 +345,15 @@ int main(void)
       allData[PPG_START_INDEX + 1] = 0x00;
       allData[PPG_START_INDEX + 2] = 0x00;
       allData[PPG_START_INDEX + 3] = 0x00;
+
+      // 扩展位：根据模式设置标志位
+#if (CURRENT_WORK_MODE == MODE_SPO2)
       allData[TEMP_START_INDEX] = 0x00;
-      allData[TEMP_START_INDEX + 1] = 0x00;
+      allData[TEMP_START_INDEX + 1] = 0x00;  // 血氧模式扩展位
+#else
+      allData[TEMP_START_INDEX] = 0x00;
+      allData[TEMP_START_INDEX + 1] = 0xFF;  // 心率模式专属标志位
+#endif
 #endif
 
       // --- 4. 计算校验�? (校验�? allData[2] �?始的 17 个字�?) ---

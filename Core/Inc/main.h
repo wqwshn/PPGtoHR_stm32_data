@@ -109,7 +109,7 @@ void Error_Handler(void);
 // PPG功能开关（修改此项后重新编译烧录即可启用/禁用PPG）
 // 1 = 启用PPG功能（需要MAX30101硬件连接）
 // 0 = 禁用PPG功能（PPG数据位置补0）
-#define ENABLE_PPG 1
+#define ENABLE_PPG 0
 
 // 统一数据包长度为21字节
 #define PACKET_LEN 21
