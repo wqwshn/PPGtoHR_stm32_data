@@ -161,18 +161,19 @@ int main(void)
 //  HAL_UART_Transmit(&huart2, (uint8_t*)"DEBUG: BLE Init OK\r\n", 21, 1000);
 
   /* ====================================================================
-   * 模块�?测阶�? (Sensor Check Phase)
+   * 模块检测阶段 (Sensor Check Phase)
    * ==================================================================== */
 
-  /* 1. MAX30101 �?�? */
-  if (MAX_Check() != 0) {
-      HAL_UART_Transmit(&huart2, (uint8_t*)"DEBUG: MAX30101 Found!\r\n", 24, 100);
-      HAL_Delay(100);
-  } else {
-      HAL_UART_Transmit(&huart2, (uint8_t*)"ERROR: MAX30101 Check Failed!\r\n", 31, 100);
-  }
+  /* 1. MAX30101 检测 - 禁用PPG功能时跳过 */
+//  if (MAX_Check() != 0) {
+//      HAL_UART_Transmit(&huart2, (uint8_t*)"DEBUG: MAX30101 Found!\r\n", 24, 100);
+//      HAL_Delay(100);
+//  } else {
+//      HAL_UART_Transmit(&huart2, (uint8_t*)"ERROR: MAX30101 Check Failed!\r\n", 31, 100);
+//  }
+  HAL_UART_Transmit(&huart2, (uint8_t*)"DEBUG: MAX30101 Check skipped (PPG disabled)\r\n", 48, 1000);
 
-  /* 2. ADC �?�? (阻塞�?) */
+  /* 2. ADC 检测 (阻塞式) */
   while (!ADC_check()) {
       HAL_UART_Transmit(&huart2, ADCbuff, sizeof(ADCbuff), 100);
       HAL_UART_Transmit(&huart2, (uint8_t*)"\r\n", 2, 100);
