@@ -38,3 +38,16 @@ MDK-ARM/L452CEU6/Objects/
 *.tmp
 *.bak
 *.log
+*.ps1
+
+# 编译产物
+*.hex
+*.bin
+*.elf
+*.lib
+
+# CMake 构建目录
+build/
+
+# Keil 日志文件
+MDK-ARM/.vscode/

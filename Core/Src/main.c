@@ -203,19 +203,19 @@ int main(void)
   HAL_UART_Transmit(&huart2, (uint8_t*)"DEBUG: MIMU Init OK\r\n", 21, 1000);
   HAL_Delay(200);
 
-//  /* 3. MAX30101 初始�? */
-//  MAX30101_Init();
-//  HAL_UART_Transmit(&huart2, (uint8_t*)"DEBUG: PPG Init OK\r\n", 20, 1000);
-//  HAL_Delay(200);
+  /* 3. MAX30101 初始�? */
+  MAX30101_Init();
+  HAL_UART_Transmit(&huart2, (uint8_t*)"DEBUG: PPG Init OK\r\n", 20, 1000);
+  HAL_Delay(200);
 
-//  /* 4. 根据当前模式配置 PPG 参数 */
-//#if (CURRENT_WORK_MODE == MODE_SPO2)
-//  PPG_Config_SpO2_Hardcoded();
-//  HAL_UART_Transmit(&huart2, (uint8_t*)"DEBUG: PPG SpO2 Mode Config.\r\n", 30, 100);
-//#else
-//  PPG_Config_Green_Hardcoded();
-//  HAL_UART_Transmit(&huart2, (uint8_t*)"DEBUG: PPG HR Mode Config.\r\n", 28, 100);
-//#endif
+  /* 4. 根据当前模式配置 PPG 参数 */
+#if (CURRENT_WORK_MODE == MODE_SPO2)
+  PPG_Config_SpO2_Hardcoded();
+  HAL_UART_Transmit(&huart2, (uint8_t*)"DEBUG: PPG SpO2 Mode Config.\r\n", 30, 100);
+#else
+  PPG_Config_Green_Hardcoded();
+  HAL_UART_Transmit(&huart2, (uint8_t*)"DEBUG: PPG HR Mode Config.\r\n", 28, 100);
+#endif
 
   /* ====================================================================
    * 系统准备就绪
